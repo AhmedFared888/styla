@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:styla/constants.dart';
 import 'package:styla/core/resources/color_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
@@ -8,6 +9,7 @@ ThemeData getApptheme() {
     // main colors
     primaryColor: ColorManager.primaryColor,
     scaffoldBackgroundColor: ColorManager.white,
+    fontFamily: kGeneralSans,
 
     // appbar theme
     appBarTheme: AppBarTheme(
