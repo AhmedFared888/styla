@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:styla/core/resources/font_manager.dart';
+import 'package:styla/core/resources/values_manager.dart';
 
 abstract class StylesManager {
   static TextStyle textStyle10Med(Color color) {
@@ -118,6 +119,7 @@ abstract class StylesManager {
     return TextStyle(
       fontSize: FontSizeManager.s64,
       fontWeight: FontWeightManager.semiBold,
+      height: AppSize.s_8,
       color: color,
     );
   }
