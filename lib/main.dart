@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:styla/features/splash/presentation/views/splash_view.dart';
+import 'package:styla/core/resources/routes_manager.dart';
+import 'package:styla/core/resources/theme_manager.dart';
 
 void main() {
   runApp(const Styla());
@@ -10,6 +11,10 @@ class Styla extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashView());
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: RoutesManager.router,
+      theme: getApptheme(),
+    );
   }
 }
