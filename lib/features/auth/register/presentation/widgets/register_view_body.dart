@@ -80,8 +80,7 @@ class RegisterViewBody extends StatelessWidget {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Email cannot be empty';
-                      } else if (!value.contains('@') ||
-                          !value.contains('.com')) {
+                      } else if (!value.contains('@')) {
                         return 'Enter a valid email';
                       }
                       return null;
@@ -139,7 +138,7 @@ class RegisterViewBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already have an account? ',
+                        StringsManager.alreadyHaveAccount,
                         style: StylesManager.textStyle16Reg(
                           ColorManager.lightGrey,
                         ),
@@ -149,7 +148,7 @@ class RegisterViewBody extends StatelessWidget {
                           GoRouter.of(context).push(RoutesManager.loginRoute);
                         },
                         child: Text(
-                          'Log In',
+                          StringsManager.login,
                           style: StylesManager.textStyle16Med(
                             ColorManager.primaryColor,
                           ).copyWith(decoration: TextDecoration.underline),

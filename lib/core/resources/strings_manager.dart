@@ -23,4 +23,8 @@ abstract class StringsManager {
   static const String createAnAccountButton = 'Create An Account';
   static const String signUpwithGoogle = 'Sign Up with Google';
   static const String signUpwithFacebook = 'Sign Up with Facebook';
+  static const String alreadyHaveAccount = 'Already have an account? ';
+
+  // login strings
+  static const String login = 'Log In';
 }
