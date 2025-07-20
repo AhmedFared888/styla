@@ -22,16 +22,32 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorManager.black,
-        body: Center(
+    return Scaffold(
+      backgroundColor: ColorManager.black,
+      body: SafeArea(
+        child: Center(
           child: Column(
             children: [
-              Image.asset(AssetsManager.splashCurve),
-              Image.asset(AssetsManager.appLogo),
-              const SizedBox(height: AppSize.s200),
-              const CustomLoadingIndicator(),
+              const SizedBox(height: AppSize.s10),
+              Expanded(
+                child: Stack(
+                  children: [
+                    Image.asset(AssetsManager.splashCurve),
+                    Positioned(
+                      bottom: AppSize.s300,
+                      left: 0,
+                      right: 0,
+                      child: Image.asset(AssetsManager.appLogo),
+                    ),
+                    const Positioned(
+                      bottom: AppSize.s66,
+                      left: 0,
+                      right: 0,
+                      child: CustomLoadingIndicator(),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
