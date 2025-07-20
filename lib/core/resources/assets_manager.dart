@@ -8,4 +8,8 @@ abstract class AssetsManager {
   // onboarding view assets
   static const onboardingCurve = '$imagePath/onboarding_curves.png';
   static const onboardingPerson = '$imagePath/onboarding_person.png';
+
+  // register view assets
+  static const googleLogo = '$imagePath/google_logo.png';
+  static const facebookLogo = '$imagePath/facebook_logo.png';
 }
