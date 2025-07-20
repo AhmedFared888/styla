@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/color_manager.dart';
+import 'package:styla/core/resources/routes_manager.dart';
 import 'package:styla/core/resources/strings_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
+import 'package:styla/core/widgets/custom_elevated_button.dart';
 
 class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({super.key});
@@ -43,24 +46,16 @@ class OnboardingViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSize.s24),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppPadding.p14,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(StringsManager.onboardingButton),
-                        const SizedBox(width: AppSize.s10),
-                        const Icon(Icons.arrow_forward_rounded),
-                      ],
-                    ),
-                  ),
+                child: CustomElevatedButton(
+                  title: StringsManager.onboardingButton,
+                  icon: Icons.arrow_forward_rounded,
+                  onPressed: () {
+                    GoRouter.of(
+                      context,
+                    ).pushReplacement(RoutesManager.registerRoute);
+                  },
                 ),
               ),
               const SizedBox(height: AppSize.s20),
