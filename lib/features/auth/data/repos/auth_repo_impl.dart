@@ -26,6 +26,22 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  @override
+  Future<Either<Failure, UserEntity>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      UserCredential userCredential = await firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      final user = userCredential.user!;
+      return right(UserEntity(uid: user.uid, email: user.email ?? ''));
+    } on FirebaseAuthException catch (e) {
+      final errorMessage = _mapFirebaseAuthError(e.code);
+      return left(Failure(errorMessage));
+    }
+  }
+
   String _mapFirebaseAuthError(String code) {
     switch (code) {
       case 'user-not-found':
