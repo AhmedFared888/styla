@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:styla/core/utils/functions/service_locator.dart';
 import 'package:styla/features/auth/domain/usecases/login_usecase.dart';
 import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
+import 'package:styla/features/auth/presentation/forget_password/views/forget_password_view.dart';
 import 'package:styla/features/auth/presentation/login/manager/cubit/login_cubit.dart';
 import 'package:styla/features/auth/presentation/login/views/login_view.dart';
 import 'package:styla/features/auth/presentation/register/manager/cubit/register_cubit.dart';
@@ -16,6 +17,7 @@ class RoutesManager {
   static const String onBoardingRoute = '/onBoarding';
   static const String registerRoute = '/register';
   static const String loginRoute = '/login';
+  static const String forgetPasswordRoute = '/forgetPassword';
   static const String homeRoute = '/home';
 
   static final router = GoRouter(
@@ -41,6 +43,10 @@ class RoutesManager {
           create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
           child: const LoginView(),
         ),
+      ),
+      GoRoute(
+        path: forgetPasswordRoute,
+        builder: (context, state) => const ForgetPasswordView(),
       ),
       GoRoute(path: homeRoute, builder: (context, state) => const HomeView()),
     ],
