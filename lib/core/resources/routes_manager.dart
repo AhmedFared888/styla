@@ -1,5 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:styla/core/utils/functions/service_locator.dart';
 import 'package:styla/features/auth/login/presentation/views/login_view.dart';
+import 'package:styla/features/auth/register/domain/usecases/register_usecase.dart';
+import 'package:styla/features/auth/register/presentation/manager/cubit/register_cubit.dart';
 import 'package:styla/features/auth/register/presentation/views/register_view.dart';
 import 'package:styla/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:styla/features/splash/presentation/views/splash_view.dart';
@@ -22,7 +26,10 @@ class RoutesManager {
       ),
       GoRoute(
         path: registerRoute,
-        builder: (context, state) => const RegisterView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => RegisterCubit(getIt.get<RegisterUsecase>()),
+          child: const RegisterView(),
+        ),
       ),
       GoRoute(path: loginRoute, builder: (context, state) => const LoginView()),
     ],
