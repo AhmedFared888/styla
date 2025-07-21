@@ -2,12 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:styla/core/errors/failure.dart';
 import 'package:styla/features/auth/domain/entities/user_entity.dart';
-import 'package:styla/features/auth/domain/repos/register_repo.dart';
+import 'package:styla/features/auth/domain/repos/auth_repo.dart';
 
-class RegisterRepoImpl extends RegisterRepo {
+class AuthRepoImpl extends AuthRepo {
   final FirebaseAuth firebaseAuth;
 
-  RegisterRepoImpl(this.firebaseAuth);
+  AuthRepoImpl(this.firebaseAuth);
 
   @override
   Future<Either<Failure, UserEntity>> register({
