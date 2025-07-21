@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:styla/core/resources/color_manager.dart';
+import 'package:styla/core/resources/routes_manager.dart';
 import 'package:styla/core/resources/strings_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 
@@ -15,7 +17,9 @@ class ForgetPasswordText extends StatelessWidget {
           style: StylesManager.textStyle16Reg(ColorManager.primaryColor),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(RoutesManager.forgetPasswordRoute);
+          },
           child: Text(
             StringsManager.resetYourPassword,
             style: StylesManager.textStyle16Med(
