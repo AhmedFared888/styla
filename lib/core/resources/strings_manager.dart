@@ -26,7 +26,16 @@ abstract class StringsManager {
   static const String alreadyHaveAccount = 'Already have an account? ';
   static const String accountCreatedSuccessfully =
       'your account created successfully';
+  static const String logIn = 'Log In';
 
   // login strings
-  static const String login = 'Log In';
+  static const String login = 'Login';
+  static const String loginToYourAccount = 'Login to your account';
+  static const String itsGreatToSeeYouAgain = 'It’s great to see you again.';
+  static const String forgotYourPassword = 'Forgot your password? ';
+  static const String resetYourPassword = 'Reset your password';
+  static const String loginWithGoogle = 'Login with Google';
+  static const String loginWithFacebook = 'Login with Facebook';
+  static const String dontHaveAnAccount = 'Don’t have an account? ';
+  static const String join = 'Join';
 }
