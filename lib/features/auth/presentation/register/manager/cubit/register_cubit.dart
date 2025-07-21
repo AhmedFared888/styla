@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:styla/features/auth/register/domain/entities/register_entity.dart';
-import 'package:styla/features/auth/register/domain/params/register_params.dart';
-import 'package:styla/features/auth/register/domain/usecases/register_usecase.dart';
+import 'package:styla/features/auth/domain/entities/user_entity.dart';
+import 'package:styla/features/auth/domain/params/register_params.dart';
+import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
 
 part 'register_state.dart';
 

@@ -11,9 +11,9 @@ import 'package:styla/core/widgets/custom_elevated_button.dart';
 import 'package:styla/core/widgets/custom_loading_indicator.dart';
 import 'package:styla/core/widgets/custom_text_form_feild.dart';
 import 'package:styla/core/widgets/social_media_button.dart';
-import 'package:styla/features/auth/register/presentation/manager/cubit/register_cubit.dart';
-import 'package:styla/features/auth/register/presentation/widgets/agreeing_text.dart';
-import 'package:styla/features/auth/register/presentation/widgets/or_divider.dart';
+import 'package:styla/features/auth/presentation/register/manager/cubit/register_cubit.dart';
+import 'package:styla/features/auth/presentation/register/widgets/agreeing_text.dart';
+import 'package:styla/features/auth/presentation/register/widgets/or_divider.dart';
 
 class RegisterViewBody extends StatelessWidget {
   RegisterViewBody({super.key});

@@ -9,8 +9,8 @@ import 'package:styla/core/resources/values_manager.dart';
 import 'package:styla/core/widgets/custom_elevated_button.dart';
 import 'package:styla/core/widgets/custom_text_form_feild.dart';
 import 'package:styla/core/widgets/social_media_button.dart';
-import 'package:styla/features/auth/login/presentation/widgets/forget_password_text.dart';
-import 'package:styla/features/auth/register/presentation/widgets/or_divider.dart';
+import 'package:styla/features/auth/presentation/login/widgets/forget_password_text.dart';
+import 'package:styla/features/auth/presentation/register/widgets/or_divider.dart';
 
 class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});

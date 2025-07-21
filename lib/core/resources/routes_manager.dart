@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:styla/core/utils/functions/service_locator.dart';
-import 'package:styla/features/auth/login/presentation/views/login_view.dart';
-import 'package:styla/features/auth/register/domain/usecases/register_usecase.dart';
-import 'package:styla/features/auth/register/presentation/manager/cubit/register_cubit.dart';
-import 'package:styla/features/auth/register/presentation/views/register_view.dart';
+import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
+import 'package:styla/features/auth/presentation/login/views/login_view.dart';
+import 'package:styla/features/auth/presentation/register/manager/cubit/register_cubit.dart';
+import 'package:styla/features/auth/presentation/register/views/register_view.dart';
 import 'package:styla/features/home/presentation/views/home_view.dart';
 import 'package:styla/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:styla/features/splash/presentation/views/splash_view.dart';

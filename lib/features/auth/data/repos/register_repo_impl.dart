@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:styla/core/errors/failure.dart';
-import 'package:styla/features/auth/register/domain/entities/register_entity.dart';
-import 'package:styla/features/auth/register/domain/repos/register_repo.dart';
+import 'package:styla/features/auth/domain/entities/user_entity.dart';
+import 'package:styla/features/auth/domain/repos/register_repo.dart';
 
 class RegisterRepoImpl extends RegisterRepo {
   final FirebaseAuth firebaseAuth;
@@ -10,7 +10,7 @@ class RegisterRepoImpl extends RegisterRepo {
   RegisterRepoImpl(this.firebaseAuth);
 
   @override
-  Future<Either<Failure, RegisterEntity>> register({
+  Future<Either<Failure, UserEntity>> register({
     required String fullName,
     required String email,
     required String password,
@@ -19,7 +19,7 @@ class RegisterRepoImpl extends RegisterRepo {
       UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       final user = userCredential.user!;
-      return right(RegisterEntity(uid: user.uid, email: user.email ?? ''));
+      return right(UserEntity(uid: user.uid, email: user.email ?? ''));
     } on FirebaseAuthException catch (e) {
       final errorMessage = _mapFirebaseAuthError(e.code);
       return left(Failure(errorMessage));
