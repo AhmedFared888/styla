@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:styla/core/utils/functions/service_locator.dart';
+import 'package:styla/features/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:styla/features/auth/domain/usecases/login_usecase.dart';
 import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
+import 'package:styla/features/auth/presentation/forget_password/manager/cubit/forget_password_cubit.dart';
 import 'package:styla/features/auth/presentation/forget_password/views/forget_password_view.dart';
 import 'package:styla/features/auth/presentation/login/manager/cubit/login_cubit.dart';
 import 'package:styla/features/auth/presentation/login/views/login_view.dart';
@@ -46,7 +48,11 @@ class RoutesManager {
       ),
       GoRoute(
         path: forgetPasswordRoute,
-        builder: (context, state) => const ForgetPasswordView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              ForgetPasswordCubit(getIt.get<ForgetPasswordUsecase>()),
+          child: const ForgetPasswordView(),
+        ),
       ),
       GoRoute(path: homeRoute, builder: (context, state) => const HomeView()),
     ],
