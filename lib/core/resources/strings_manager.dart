@@ -44,4 +44,11 @@ abstract class StringsManager {
   static const String ressetPasswordText =
       'Enter your email for the verification process. We will send a verification link to your email.';
   static const String forgotPassword = 'Forgot password';
+
+  // main view strings
+  static const String home = 'Home';
+  static const String saved = 'Saved';
+  static const String cart = 'Cart';
+  static const String search = 'Search';
+  static const String account = 'Account';
 }

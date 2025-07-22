@@ -12,4 +12,11 @@ abstract class AssetsManager {
   // register view assets
   static const googleLogo = '$imagePath/google_logo.png';
   static const facebookLogo = '$imagePath/facebook_logo.png';
+
+  // main view assets
+  static const String home = '$imagePath/home.png';
+  static const String saved = '$imagePath/saved.png';
+  static const String search = '$imagePath/search.png';
+  static const String cart = '$imagePath/cart.png';
+  static const String account = '$imagePath/account.png';
 }

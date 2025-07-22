@@ -36,7 +36,7 @@ class LoginViewBody extends StatelessWidget {
           );
         } else if (state is LoginSuccess) {
           Navigator.of(context).pop();
-          GoRouter.of(context).pushReplacement(RoutesManager.homeRoute);
+          GoRouter.of(context).pushReplacement(RoutesManager.mainRoute);
         } else if (state is LoginFailure) {
           Navigator.of(context).pop();
           ScaffoldMessenger.of(
