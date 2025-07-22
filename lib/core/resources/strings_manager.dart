@@ -38,4 +38,10 @@ abstract class StringsManager {
   static const String loginWithFacebook = 'Login with Facebook';
   static const String dontHaveAnAccount = 'Don’t have an account? ';
   static const String join = 'Join';
+
+  // forget password strings
+  static const String send = 'send';
+  static const String ressetPasswordText =
+      'Enter your email for the verification process. We will send a verification link to your email.';
+  static const String forgotPassword = 'Forgot password';
 }
