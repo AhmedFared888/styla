@@ -14,23 +14,25 @@ import 'package:styla/features/auth/presentation/register/views/register_view.da
 import 'package:styla/features/cart/presentation/views/cart_view.dart';
 import 'package:styla/features/home/presentation/views/home_view.dart';
 import 'package:styla/features/main/main_view.dart';
+import 'package:styla/features/notification/presentation/views/notification_view.dart';
 import 'package:styla/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:styla/features/saved/presentation/views/saved_view.dart';
 import 'package:styla/features/search/presentation/views/search_view.dart';
 import 'package:styla/features/splash/presentation/views/splash_view.dart';
 
 class RoutesManager {
-  static const String splashRoute = '/';
+  static const String splashRoute = '/splash';
   static const String onBoardingRoute = '/onBoarding';
   static const String registerRoute = '/register';
   static const String loginRoute = '/login';
   static const String forgetPasswordRoute = '/forgetPassword';
-  static const String mainRoute = '/main';
+  static const String mainRoute = '/';
   static const String homeRoute = '/home';
   static const String savedRoute = '/saved';
   static const String cartRoute = '/cart';
   static const String searchRoute = '/search';
   static const String accountRoute = '/account';
+  static const String notificationRoute = '/notification';
 
   static final router = GoRouter(
     routes: [
@@ -75,6 +77,10 @@ class RoutesManager {
       GoRoute(
         path: accountRoute,
         builder: (context, state) => const AccountView(),
+      ),
+      GoRoute(
+        path: notificationRoute,
+        builder: (context, state) => const NotificationView(),
       ),
     ],
   );
