@@ -51,4 +51,8 @@ abstract class StringsManager {
   static const String cart = 'Cart';
   static const String search = 'Search';
   static const String account = 'Account';
+
+  // home view strings
+  static const String discover = 'Discover';
+  static const String searchForClothes = 'Search for clothes...';
 }
