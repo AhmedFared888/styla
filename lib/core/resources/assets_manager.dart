@@ -19,4 +19,9 @@ abstract class AssetsManager {
   static const String search = '$imagePath/search.png';
   static const String cart = '$imagePath/cart.png';
   static const String account = '$imagePath/account.png';
+
+  // hom view assets
+  static const String notificationIcon = '$imagePath/Bell.png';
+  static const String filterButton = '$imagePath/filter_button.png';
+  static const String favorite = '$imagePath/black_heart.png';
 }
