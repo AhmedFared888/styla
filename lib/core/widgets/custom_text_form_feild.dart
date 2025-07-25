@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
-    required this.textEditingController,
+    this.textEditingController,
     required this.hintText,
-    required this.labelText,
+    this.labelText,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.validator,
   });
 
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
   final String hintText;
-  final String labelText;
+  final String? labelText;
   final bool isPassword;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
