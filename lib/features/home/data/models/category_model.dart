@@ -1,9 +1,13 @@
-class CategoryModel {
-  final List<String> categories;
+import 'package:styla/features/home/domain/entities/category_entity.dart';
 
-  CategoryModel({required this.categories});
+class CategoryModel extends CategoryEntity {
+  final String category;
+  CategoryModel({required this.category}) : super(categoryName: category);
 
-  factory CategoryModel.fromJson(List<dynamic> json) {
-    return CategoryModel(categories: List<String>.from(json));
+  factory CategoryModel.fromJson(String json) {
+    return CategoryModel(category: json);
+  }
+  static List<CategoryModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((e) => CategoryModel.fromJson(e)).toList();
   }
 }
