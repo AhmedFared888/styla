@@ -4,6 +4,7 @@ import 'package:styla/core/errors/failure.dart';
 import 'package:styla/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:styla/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
+import 'package:styla/features/home/domain/entities/product_entity/product_entity.dart';
 import 'package:styla/features/home/domain/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
@@ -23,6 +24,26 @@ class HomeRepoImpl extends HomeRepo {
       }
       var categories = await homeRemoteDataSource.getAllCategory();
       return right(categories);
+    } catch (e, s) {
+      print(e);
+      print(s);
+      if (e is DioException) {
+        return left(ServerFailre.fromDioException(e));
+      } else {
+        return left(ServerFailre(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
+    try {
+      var productLocal = homeLocalDataSource.getAllProducts();
+      if (productLocal.isNotEmpty) {
+        return right(productLocal);
+      }
+      var products = await homeRemoteDataSource.getAllProducts();
+      return right(products);
     } catch (e, s) {
       print(e);
       print(s);

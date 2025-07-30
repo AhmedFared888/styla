@@ -6,6 +6,7 @@ import 'package:styla/core/resources/routes_manager.dart';
 import 'package:styla/core/resources/theme_manager.dart';
 import 'package:styla/core/utils/functions/service_locator.dart';
 import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
+import 'package:styla/features/home/domain/entities/product_entity/product_entity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +15,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(CategoryEntityAdapter());
   await Hive.openBox<CategoryEntity>(kCategoryBox);
+  await Hive.openBox<ProductEntity>(kProductBox);
 
   setupServiceLocator();
 
