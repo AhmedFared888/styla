@@ -1,9 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:styla/core/utils/api_service.dart';
 import 'package:styla/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:styla/features/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:styla/features/auth/domain/usecases/login_usecase.dart';
 import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
+import 'package:styla/features/home/data/data_sources/home_local_data_source.dart';
+import 'package:styla/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:styla/features/home/data/repos/home_repo_impl.dart';
+import 'package:styla/features/home/domain/usecases/home_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -26,5 +32,15 @@ void setupServiceLocator() {
   // forget password
   getIt.registerLazySingleton<ForgetPasswordUsecase>(
     () => ForgetPasswordUsecase(getIt.get<AuthRepoImpl>()),
+  );
+
+  // home
+  getIt.registerLazySingleton<HomeUsecase>(
+    () => HomeUsecase(
+      HomeRepoImpl(
+        homeLocalDataSource: HomeLocalDataSourceImpl(),
+        homeRemoteDataSource: HomeRemoteDataSourceImple(ApiService(Dio())),
+      ),
+    ),
   );
 }
