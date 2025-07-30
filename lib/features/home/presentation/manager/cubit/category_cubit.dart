@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:styla/features/home/domain/entities/category_entity.dart';
+import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
 import 'package:styla/features/home/domain/usecases/home_usecase.dart';
 
 part 'category_state.dart';

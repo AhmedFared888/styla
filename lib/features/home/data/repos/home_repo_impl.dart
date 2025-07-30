@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:styla/core/errors/failure.dart';
 import 'package:styla/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:styla/features/home/data/data_sources/home_remote_data_source.dart';
-import 'package:styla/features/home/domain/entities/category_entity.dart';
+import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
 import 'package:styla/features/home/domain/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {

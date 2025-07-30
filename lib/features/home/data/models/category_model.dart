@@ -1,4 +1,4 @@
-import 'package:styla/features/home/domain/entities/category_entity.dart';
+import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
 
 class CategoryModel extends CategoryEntity {
   final String category;
