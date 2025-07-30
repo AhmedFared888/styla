@@ -14,7 +14,7 @@ class HomeRemoteDataSourceImple extends HomeRemoteDataSource {
   HomeRemoteDataSourceImple(this.apiService);
   @override
   Future<List<CategoryEntity>> getAllCategory() async {
-    var response = await apiService.get(endPoint: 'products/categories/');
+    final response = await apiService.get(endPoint: 'products/categories/');
     final List<dynamic> data = response as List<dynamic>;
     final categories = CategoryModel.fromJsonList(data);
     saveCategoryData(categories, kCategoryBox);

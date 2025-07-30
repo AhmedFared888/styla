@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:styla/core/resources/color_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
+import 'package:styla/features/home/domain/entities/category_entity.dart';
 
 class CategoryListViewItem extends StatelessWidget {
-  const CategoryListViewItem({super.key});
+  const CategoryListViewItem({super.key, required this.category});
+
+  final CategoryEntity category;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class CategoryListViewItem extends StatelessWidget {
             vertical: AppPadding.p8,
           ),
           child: Text(
-            'Tshirts',
+            category.categoryName,
             style: StylesManager.textStyle16Med(ColorManager.primaryColor),
           ),
         ),
