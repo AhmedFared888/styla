@@ -9,7 +9,7 @@ import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
 import 'package:styla/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:styla/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:styla/features/home/data/repos/home_repo_impl.dart';
-import 'package:styla/features/home/domain/usecases/home_usecase.dart';
+import 'package:styla/features/home/domain/usecases/categories_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -35,8 +35,8 @@ void setupServiceLocator() {
   );
 
   // home
-  getIt.registerLazySingleton<HomeUsecase>(
-    () => HomeUsecase(
+  getIt.registerLazySingleton<CategoriesUsecase>(
+    () => CategoriesUsecase(
       HomeRepoImpl(
         homeLocalDataSource: HomeLocalDataSourceImpl(),
         homeRemoteDataSource: HomeRemoteDataSourceImple(ApiService(Dio())),
