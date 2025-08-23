@@ -9,17 +9,35 @@ import 'package:styla/features/home/domain/entities/category_entity/category_ent
 import 'package:styla/features/home/domain/entities/product_entity/product_entity.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    print("🚀 Initializing Flutter app...");
 
-  await Hive.initFlutter();
-  Hive.registerAdapter(CategoryEntityAdapter());
-  await Hive.openBox<CategoryEntity>(kCategoryBox);
-  await Hive.openBox<ProductEntity>(kProductBox);
+    await Firebase.initializeApp();
+    print("✅ Firebase initialized");
 
-  setupServiceLocator();
+    await Hive.initFlutter();
+    print("✅ Hive initialized");
 
-  runApp(const Styla());
+    Hive.registerAdapter(CategoryEntityAdapter());
+    Hive.registerAdapter(ProductEntityAdapter());
+    print("✅ Hive adapters registered");
+
+    await Hive.openBox<CategoryEntity>(kCategoryBox);
+    await Hive.openBox<ProductEntity>(kProductBox);
+    print("✅ Hive boxes opened");
+
+    setupServiceLocator();
+    print("✅ Service locator setup complete");
+
+    runApp(const Styla());
+    print("✅ App started successfully");
+  } catch (e, stackTrace) {
+    print("❌ Fatal error during app initialization: $e");
+    print("Stack trace: $stackTrace");
+    // Re-throw to show Flutter's error screen
+    rethrow;
+  }
 }
 
 class Styla extends StatelessWidget {
