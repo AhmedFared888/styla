@@ -14,14 +14,13 @@ abstract class AssetsManager {
   static const facebookLogo = '$imagePath/facebook_logo.png';
 
   // main view assets
-  static const String home = '$imagePath/home.png';
-  static const String saved = '$imagePath/saved.png';
-  static const String search = '$imagePath/search.png';
-  static const String cart = '$imagePath/cart.png';
-  static const String account = '$imagePath/account.png';
+  static const String home = '$imagePath/home_icon.svg';
+  static const String favorite = '$imagePath/favorite_icon.svg';
+  static const String search = '$imagePath/search_icon.svg';
+  static const String cart = '$imagePath/cart_icon.svg';
+  static const String account = '$imagePath/profile_icon.svg';
 
-  // hom view assets
+  // home view assets
   static const String notificationIcon = '$imagePath/Bell.png';
   static const String filterButton = '$imagePath/filter_button.png';
-  static const String favorite = '$imagePath/black_heart.png';
 }
