@@ -9,38 +9,64 @@ import 'package:styla/features/auth/domain/usecases/register_usecase.dart';
 import 'package:styla/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:styla/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:styla/features/home/data/repos/home_repo_impl.dart';
+import 'package:styla/features/home/domain/usecases/allproducts_usecase.dart';
 import 'package:styla/features/home/domain/usecases/categories_usecase.dart';
 
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  // auth repo impl
-  getIt.registerLazySingleton<AuthRepoImpl>(
-    () => AuthRepoImpl(FirebaseAuth.instance),
-  );
+  try {
+    print("🔧 Setting up service locator...");
 
-  // register
-  getIt.registerLazySingleton<RegisterUsecase>(
-    () => RegisterUsecase(getIt.get<AuthRepoImpl>()),
-  );
+    // auth repo impl
+    getIt.registerLazySingleton<AuthRepoImpl>(
+      () => AuthRepoImpl(FirebaseAuth.instance),
+    );
+    print("✅ AuthRepoImpl registered");
 
-  // login
-  getIt.registerLazySingleton<LoginUsecase>(
-    () => LoginUsecase(getIt.get<AuthRepoImpl>()),
-  );
+    // register
+    getIt.registerLazySingleton<RegisterUsecase>(
+      () => RegisterUsecase(getIt.get<AuthRepoImpl>()),
+    );
+    print("✅ RegisterUsecase registered");
 
-  // forget password
-  getIt.registerLazySingleton<ForgetPasswordUsecase>(
-    () => ForgetPasswordUsecase(getIt.get<AuthRepoImpl>()),
-  );
+    // login
+    getIt.registerLazySingleton<LoginUsecase>(
+      () => LoginUsecase(getIt.get<AuthRepoImpl>()),
+    );
+    print("✅ LoginUsecase registered");
 
-  // home
-  getIt.registerLazySingleton<CategoriesUsecase>(
-    () => CategoriesUsecase(
-      HomeRepoImpl(
-        homeLocalDataSource: HomeLocalDataSourceImpl(),
-        homeRemoteDataSource: HomeRemoteDataSourceImple(ApiService(Dio())),
+    // forget password
+    getIt.registerLazySingleton<ForgetPasswordUsecase>(
+      () => ForgetPasswordUsecase(getIt.get<AuthRepoImpl>()),
+    );
+    print("✅ ForgetPasswordUsecase registered");
+
+    // home
+    getIt.registerLazySingleton<CategoriesUsecase>(
+      () => CategoriesUsecase(
+        HomeRepoImpl(
+          homeLocalDataSource: HomeLocalDataSourceImpl(),
+          homeRemoteDataSource: HomeRemoteDataSourceImple(ApiService(Dio())),
+        ),
       ),
-    ),
-  );
+    );
+    print("✅ CategoriesUsecase registered");
+
+    getIt.registerLazySingleton<AllproductsUsecase>(
+      () => AllproductsUsecase(
+        HomeRepoImpl(
+          homeLocalDataSource: HomeLocalDataSourceImpl(),
+          homeRemoteDataSource: HomeRemoteDataSourceImple(ApiService(Dio())),
+        ),
+      ),
+    );
+    print("✅ AllproductsUsecase registered");
+
+    print("✅ Service locator setup completed successfully");
+  } catch (e, stackTrace) {
+    print("❌ Error setting up service locator: $e");
+    print("Stack trace: $stackTrace");
+    rethrow;
+  }
 }
