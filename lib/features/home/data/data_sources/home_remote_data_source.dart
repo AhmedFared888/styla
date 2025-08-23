@@ -16,23 +16,71 @@ class HomeRemoteDataSourceImple extends HomeRemoteDataSource {
   final ApiService apiService;
 
   HomeRemoteDataSourceImple(this.apiService);
+
   @override
   Future<List<CategoryEntity>> getAllCategory() async {
-    final response = await apiService.get(endPoint: 'products/categories/');
-    final List<dynamic> data = response as List<dynamic>;
-    final categories = CategoryModel.fromJsonList(data);
-    saveCategoryData(categories, kCategoryBox);
-    return categories;
+    try {
+      final response = await apiService.get(endPoint: 'products/categories/');
+
+      if (response == null) {
+        print('❌ Categories API returned null response');
+        return [];
+      }
+
+      if (response is! List) {
+        print(
+          '❌ Categories API returned unexpected format: ${response.runtimeType}',
+        );
+        return [];
+      }
+
+      final List<dynamic> data = response;
+      final categories = CategoryModel.fromJsonList(data);
+      saveCategoryData(categories, kCategoryBox);
+      return categories;
+    } catch (e) {
+      print('❌ Error fetching categories: $e');
+      return [];
+    }
   }
 
   @override
   Future<List<ProductEntity>> getAllProducts() async {
-    final response = await apiService.get(endPoint: 'products');
-    final List<dynamic> data = response as List<dynamic>;
-    final products = data
-        .map((item) => ProductModel.fromJson(item as Map<String, dynamic>))
-        .toList();
-    saveProductData(products, kProductBox);
-    return products;
+    try {
+      final response = await apiService.get(endPoint: 'products');
+
+      if (response == null) {
+        print('❌ Products API returned null response');
+        return [];
+      }
+
+      if (response is! List) {
+        print(
+          '❌ Products API returned unexpected format: ${response.runtimeType}',
+        );
+        return [];
+      }
+
+      final List<dynamic> data = response;
+      final products = data
+          .where((item) => item != null)
+          .map((item) {
+            try {
+              return ProductModel.fromJson(item as Map<String, dynamic>);
+            } catch (e) {
+              print('❌ Error parsing product: $e');
+              return null;
+            }
+          })
+          .where((product) => product != null)
+          .cast<ProductEntity>()
+          .toList();
+
+      saveProductData(products, kProductBox);
+      return products;
+    } catch (e) {
+      print('❌ Error fetching products: $e');
+      return [];
+    }
   }
 }
