@@ -1,11 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/color_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
+import 'package:styla/core/widgets/custom_loading_indicator.dart';
+import 'package:styla/features/home/domain/entities/product_entity/product_entity.dart';
 
 class HomeGridViewItem extends StatelessWidget {
-  const HomeGridViewItem({super.key});
+  final ProductEntity productEntity;
+  const HomeGridViewItem({super.key, required this.productEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +19,38 @@ class HomeGridViewItem extends StatelessWidget {
         Expanded(
           child: Stack(
             children: [
-              Image.network(
-                'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(AppSize.s8),
+                  color: ColorManager.lightGrey2,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppPadding.p20,
+                    vertical: AppPadding.p6,
+                  ),
+                  child: ClipRRect(
+                    child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      imageUrl: productEntity.productImage,
+                      placeholder: (context, url) => const Center(
+                        child: SizedBox(
+                          width: AppSize.s24,
+                          height: AppSize.s24,
+                          child: CustomLoadingIndicator(),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: ColorManager.lightGrey,
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.broken_image_outlined,
+                          color: ColorManager.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Positioned(
                 right: AppSize.s12,
@@ -26,8 +61,11 @@ class HomeGridViewItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppSize.s8),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(AppPadding.p8),
-                    child: Image.asset(AssetsManager.favorite),
+                    padding: const EdgeInsets.all(AppPadding.p4),
+                    child: SvgPicture.asset(
+                      AssetsManager.favorite,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -39,13 +77,15 @@ class HomeGridViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Regular Fit Slogan',
+              productEntity.productName,
               style: StylesManager.textStyle16Sem(ColorManager.primaryColor),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
             Row(
               children: [
                 Text(
-                  '\$ 1,190',
+                  '\$ ${productEntity.productPrice}',
                   style: StylesManager.textStyle12Med(
                     ColorManager.primaryColor,
                   ),

@@ -10,10 +10,10 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSize.s24),
+          padding: EdgeInsets.symmetric(horizontal: AppSize.s18),
           child: Column(
             children: [
               TitleSection(),
