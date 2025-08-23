@@ -13,6 +13,12 @@ final class CategorySuccesse extends CategoryState {
   CategorySuccesse({required this.categories});
 }
 
+final class CategorySelected extends CategoryState {
+  final String category;
+
+  CategorySelected({required this.category});
+}
+
 final class CategoryFailure extends CategoryState {
   final String errorMessage;
 

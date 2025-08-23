@@ -8,6 +8,12 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.homeUsecase) : super(CategoryInitial());
   final CategoriesUsecase homeUsecase;
+  String selectedCategory = "All"; // Default
+
+  void changeCategory(String category) {
+    selectedCategory = category;
+    emit(CategorySelected(category: category));
+  }
 
   Future<void> getAllCategories() async {
     try {
