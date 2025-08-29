@@ -14,7 +14,14 @@ class CategoryListView extends StatelessWidget {
       height: AppSize.s40,
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
+          print(
+            "🔄 CategoryListView rebuilding with state: ${state.runtimeType}",
+          );
+
           if (state is CategorySuccesse) {
+            print(
+              "✅ CategoryListView: Success state with ${state.categories.length} categories, selected: '${state.selectedCategory}'",
+            );
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -25,8 +32,12 @@ class CategoryListView extends StatelessWidget {
               itemCount: state.categories.length,
             );
           } else if (state is CategoryFailure) {
+            print(
+              "❌ CategoryListView: Failure state with error: ${state.errorMessage}",
+            );
             return Center(child: Text(state.errorMessage));
           } else {
+            print("⏳ CategoryListView: Loading/Initial state");
             return const CustomLoadingIndicator();
           }
         },

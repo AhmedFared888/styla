@@ -20,19 +20,28 @@ class ProductEntityAdapter extends TypeAdapter<ProductEntity> {
       productImage: fields[0] as String,
       productName: fields[1] as String,
       productPrice: fields[2] as double,
+      productId: fields[3] as int?,
+      category: fields[4] as String?,
+      description: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductEntity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.productImage)
       ..writeByte(1)
       ..write(obj.productName)
       ..writeByte(2)
-      ..write(obj.productPrice);
+      ..write(obj.productPrice)
+      ..writeByte(3)
+      ..write(obj.productId)
+      ..writeByte(4)
+      ..write(obj.category)
+      ..writeByte(5)
+      ..write(obj.description);
   }
 
   @override

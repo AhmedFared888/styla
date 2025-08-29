@@ -9,8 +9,9 @@ final class CategoryLoading extends CategoryState {}
 
 final class CategorySuccesse extends CategoryState {
   final List<CategoryEntity> categories;
+  final String selectedCategory;
 
-  CategorySuccesse({required this.categories});
+  CategorySuccesse({required this.categories, required this.selectedCategory});
 }
 
 final class CategorySelected extends CategoryState {

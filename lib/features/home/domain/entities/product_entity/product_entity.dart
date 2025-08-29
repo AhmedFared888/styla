@@ -13,9 +13,21 @@ class ProductEntity {
   @HiveField(2)
   final double productPrice;
 
+  @HiveField(3)
+  final int? productId;
+
+  @HiveField(4)
+  final String? category;
+
+  @HiveField(5)
+  final String? description;
+
   ProductEntity({
     required this.productImage,
     required this.productName,
     required this.productPrice,
+    this.productId,
+    this.category,
+    this.description,
   });
 }

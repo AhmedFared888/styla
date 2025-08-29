@@ -6,4 +6,5 @@ import 'package:styla/features/home/domain/entities/product_entity/product_entit
 abstract class HomeRepo {
   Future<Either<Failure, List<CategoryEntity>>> getAllCategory();
   Future<Either<Failure, List<ProductEntity>>> getAllProducts();
+  Future<void> clearLocalStorage();
 }

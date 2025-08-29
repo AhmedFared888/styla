@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:styla/features/home/domain/entities/category_entity/category_entity.dart';
 import 'package:styla/features/home/domain/usecases/categories_usecase.dart';
+import 'package:styla/features/home/presentation/manager/all_product_cubit/all_product_cubit.dart';
 
 part 'category_state.dart';
 
@@ -9,10 +10,27 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.homeUsecase) : super(CategoryInitial());
   final CategoriesUsecase homeUsecase;
   String selectedCategory = "All"; // Default
+  List<CategoryEntity> _categories = []; // Store categories locally
 
-  void changeCategory(String category) {
+  void changeCategory(String category, AllProductCubit productCubit) {
+    print("🔄 Changing category from '$selectedCategory' to '$category'");
     selectedCategory = category;
-    emit(CategorySelected(category: category));
+
+    // Emit a state that includes both categories and selected category
+    if (_categories.isNotEmpty) {
+      emit(
+        CategorySuccesse(
+          categories: _categories,
+          selectedCategory: selectedCategory,
+        ),
+      );
+    } else {
+      emit(CategorySelected(category: category));
+    }
+
+    print("✅ Emitted state for '$category'");
+    productCubit.filterByCategory(category);
+    print("✅ Called filterByCategory on AllProductCubit");
   }
 
   Future<void> getAllCategories() async {
@@ -26,7 +44,27 @@ class CategoryCubit extends Cubit<CategoryState> {
         },
         (categories) {
           print("✅ Categories Loaded: ${categories.length}");
-          emit(CategorySuccesse(categories: categories));
+
+          // to add All index in the first
+          final List<CategoryEntity> updatedCategories = [
+            CategoryEntity(categoryName: "All"),
+            ...categories,
+          ];
+
+          // Store categories locally
+          _categories = updatedCategories;
+
+          print(
+            "🔍 Available categories: ${updatedCategories.map((c) => c.categoryName).toList()}",
+          );
+
+          // Emit success state with selected category info
+          emit(
+            CategorySuccesse(
+              categories: updatedCategories,
+              selectedCategory: selectedCategory,
+            ),
+          );
         },
       );
     } catch (e, stackTrace) {

@@ -6,6 +6,7 @@ import 'package:styla/features/home/domain/entities/product_entity/product_entit
 abstract class HomeLocalDataSource {
   List<CategoryEntity> getAllCategory();
   List<ProductEntity> getAllProducts();
+  Future<void> clearAllData();
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
@@ -19,5 +20,13 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   List<ProductEntity> getAllProducts() {
     var box = Hive.box<ProductEntity>(kProductBox);
     return box.values.toList();
+  }
+
+  @override
+  Future<void> clearAllData() async {
+    print("🧹 Clearing Hive storage");
+    await Hive.box<CategoryEntity>(kCategoryBox).clear();
+    await Hive.box<ProductEntity>(kProductBox).clear();
+    print("✅ Hive storage cleared");
   }
 }

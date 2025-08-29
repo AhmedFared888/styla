@@ -35,7 +35,11 @@ class HomeRemoteDataSourceImple extends HomeRemoteDataSource {
       }
 
       final List<dynamic> data = response;
+      print('🔍 Raw categories API response: $data');
       final categories = CategoryModel.fromJsonList(data);
+      print(
+        '🔍 Parsed categories: ${categories.map((c) => c.categoryName).toList()}',
+      );
       saveCategoryData(categories, kCategoryBox);
       return categories;
     } catch (e) {
@@ -62,6 +66,19 @@ class HomeRemoteDataSourceImple extends HomeRemoteDataSource {
       }
 
       final List<dynamic> data = response;
+      print('🔍 Raw products API response sample: ${data.take(2).toList()}');
+
+      // Debug the first product structure
+      if (data.isNotEmpty) {
+        final firstProduct = data.first as Map<String, dynamic>;
+        print('🔍 First product structure: $firstProduct');
+        print('🔍 First product keys: ${firstProduct.keys.toList()}');
+        print('🔍 First product category value: ${firstProduct['category']}');
+        print(
+          '🔍 First product category type: ${firstProduct['category']?.runtimeType}',
+        );
+      }
+
       final products = data
           .where((item) => item != null)
           .map((item) {
@@ -76,6 +93,37 @@ class HomeRemoteDataSourceImple extends HomeRemoteDataSource {
           .cast<ProductEntity>()
           .toList();
 
+      // Temporary fix: If products don't have categories, assign them based on index
+      // This is a workaround until we figure out the actual API structure
+      if (products.isNotEmpty && products.first.category == null) {
+        print(
+          '⚠️ Products don\'t have category information, assigning categories based on index',
+        );
+        final categories = [
+          'electronics',
+          'jewelery',
+          'men\'s clothing',
+          'women\'s clothing',
+        ];
+        for (int i = 0; i < products.length; i++) {
+          final categoryIndex = i % categories.length;
+          // Create a new ProductEntity with the assigned category
+          final product = products[i];
+          products[i] = ProductEntity(
+            productImage: product.productImage,
+            productName: product.productName,
+            productPrice: product.productPrice,
+            productId: product.productId,
+            category: categories[categoryIndex],
+            description: product.description,
+          );
+        }
+        print('✅ Assigned categories to products');
+      }
+
+      print(
+        '🔍 Parsed products sample: ${products.take(2).map((p) => '${p.productName} (${p.category})').toList()}',
+      );
       saveProductData(products, kProductBox);
       return products;
     } catch (e) {

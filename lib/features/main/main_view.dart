@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/color_manager.dart';
 import 'package:styla/core/resources/strings_manager.dart';
@@ -69,7 +69,6 @@ class _MainViewState extends State<MainView> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: ColorManager.primaryColor,
         unselectedItemColor: ColorManager.lightGrey,
-
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
         items: [

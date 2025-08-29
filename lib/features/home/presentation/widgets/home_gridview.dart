@@ -13,7 +13,16 @@ class HomeGridView extends StatelessWidget {
     return Expanded(
       child: BlocBuilder<AllProductCubit, AllProductState>(
         builder: (context, state) {
+          print("🔄 HomeGridView rebuilding with state: ${state.runtimeType}");
+
           if (state is AllProductSuccess) {
+            print(
+              "✅ HomeGridView: Success state with ${state.products.length} products",
+            );
+            print(
+              "🔍 Products in grid: ${state.products.take(3).map((p) => '${p.productName} (${p.category})').toList()}",
+            );
+
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, //  2 columns
@@ -29,11 +38,30 @@ class HomeGridView extends StatelessWidget {
               itemCount: state.products.length,
             );
           } else if (state is AllProductFailure) {
+            print(
+              "❌ HomeGridView: Failure state with error: ${state.errorMessage}",
+            );
             return Center(
               child: Text(state.errorMessage),
             );
           } else {
-            return const CustomLoadingIndicator();
+            print("⏳ HomeGridView: Loading/Initial state");
+            return const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomLoadingIndicator(),
+                  SizedBox(height: 16),
+                  Text(
+                    "Loading products...",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            );
           }
         },
       ),
