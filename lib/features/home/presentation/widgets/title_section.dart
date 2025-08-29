@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/color_manager.dart';
@@ -23,7 +24,7 @@ class TitleSection extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(RoutesManager.notificationRoute);
           },
-          child: Image.asset(AssetsManager.notificationIcon),
+          child: SvgPicture.asset(AssetsManager.notificationIcon),
         ),
         const SizedBox(width: AppSize.s8),
       ],

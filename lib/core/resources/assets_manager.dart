@@ -21,6 +21,6 @@ abstract class AssetsManager {
   static const String account = '$imagePath/profile_icon.svg';
 
   // home view assets
-  static const String notificationIcon = '$imagePath/Bell.png';
-  static const String filterButton = '$imagePath/filter_button.png';
+  static const String notificationIcon = '$imagePath/Bell.svg';
+  static const String filterButton = '$imagePath/filter_button.svg';
 }

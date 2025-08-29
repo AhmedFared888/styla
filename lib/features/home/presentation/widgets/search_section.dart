@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/strings_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
@@ -15,7 +16,7 @@ class SearchSection extends StatelessWidget {
           child: CustomTextFormField(hintText: StringsManager.searchForClothes),
         ),
         const SizedBox(width: AppSize.s8),
-        Image.asset(AssetsManager.filterButton),
+        SvgPicture.asset(AssetsManager.filterButton),
       ],
     );
   }

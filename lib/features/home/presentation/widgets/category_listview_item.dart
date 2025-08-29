@@ -69,14 +69,14 @@ class CategoryListViewItem extends StatelessWidget {
                               : ColorManager.primaryColor,
                         ),
                       ),
-                      if (isSelected) ...[
-                        const SizedBox(width: 8),
-                        Icon(
-                          Icons.check_circle,
-                          color: ColorManager.white,
-                          size: 16,
-                        ),
-                      ],
+                      // if (isSelected) ...[
+                      //   const SizedBox(width: 8),
+                      //   Icon(
+                      //     Icons.check_circle,
+                      //     color: ColorManager.white,
+                      //     size: 16,
+                      //   ),
+                      // ],
                     ],
                   ),
                 ),
