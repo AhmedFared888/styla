@@ -21,7 +21,7 @@ class ForgetPasswordText extends StatelessWidget {
             GoRouter.of(context).push(RoutesManager.forgetPasswordRoute);
           },
           child: Text(
-            StringsManager.resetYourPassword,
+            StringsManager.resetIt,
             style: StylesManager.textStyle16Med(
               ColorManager.primaryColor,
             ).copyWith(decoration: TextDecoration.underline),

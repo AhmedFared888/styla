@@ -25,15 +25,15 @@ class AgreeingText extends StatelessWidget {
                 ).copyWith(decoration: TextDecoration.underline),
               ),
             ),
-            GestureDetector(
-              onTap: () {},
-              child: Text(
-                StringsManager.privacy,
-                style: StylesManager.textStyle16Med(
-                  ColorManager.primaryColor,
-                ).copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
+            // GestureDetector(
+            //   onTap: () {},
+            //   child: Text(
+            //     StringsManager.privacyPolicy,
+            //     style: StylesManager.textStyle16Med(
+            //       ColorManager.primaryColor,
+            //     ).copyWith(decoration: TextDecoration.underline),
+            //   ),
+            // ),
           ],
         ),
         Row(
@@ -41,7 +41,7 @@ class AgreeingText extends StatelessWidget {
             GestureDetector(
               onTap: () {},
               child: Text(
-                StringsManager.policy,
+                StringsManager.privacyPolicy,
                 style: StylesManager.textStyle16Med(
                   ColorManager.primaryColor,
                 ).copyWith(decoration: TextDecoration.underline),

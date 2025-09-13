@@ -16,8 +16,8 @@ abstract class StringsManager {
 
   static const String agreeingText = 'By signing up you agree to our ';
   static const String terms = 'Terms, ';
-  static const String privacy = 'Privacy ';
-  static const String policy = 'Policy, ';
+  static const String privacyPolicy = 'Privacy Policy';
+  //static const String policy = 'Policy, ';
   static const String and = 'and ';
   static const String cookieUse = 'Cookie Use';
   static const String createAnAccountButton = 'Create An Account';
@@ -33,7 +33,7 @@ abstract class StringsManager {
   static const String loginToYourAccount = 'Login to your account';
   static const String itsGreatToSeeYouAgain = 'It’s great to see you again.';
   static const String forgotYourPassword = 'Forgot your password? ';
-  static const String resetYourPassword = 'Reset your password';
+  static const String resetIt = 'Reset It';
   static const String loginWithGoogle = 'Login with Google';
   static const String loginWithFacebook = 'Login with Facebook';
   static const String dontHaveAnAccount = 'Don’t have an account? ';
