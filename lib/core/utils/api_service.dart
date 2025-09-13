@@ -15,10 +15,10 @@ class ApiService {
       var response = await _dio.get('$baseUrl$endPoint');
       return response.data;
     } on DioException catch (e) {
-      print('❌ API Error for $endPoint: ${e.message}');
+      //print('❌ API Error for $endPoint: ${e.message}');
       rethrow;
     } catch (e) {
-      print('❌ Unexpected error for $endPoint: $e');
+      // print('❌ Unexpected error for $endPoint: $e');
       rethrow;
     }
   }

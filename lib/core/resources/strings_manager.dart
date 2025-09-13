@@ -55,4 +55,7 @@ abstract class StringsManager {
   // home view strings
   static const String discover = 'Discover';
   static const String searchForClothes = 'Search for clothes...';
+
+  // saved view strings
+  static const String savedItems = 'Saved Items';
 }

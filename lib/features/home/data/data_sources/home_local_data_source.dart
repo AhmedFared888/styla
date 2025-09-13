@@ -24,9 +24,9 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
 
   @override
   Future<void> clearAllData() async {
-    print("🧹 Clearing Hive storage");
+    //print("🧹 Clearing Hive storage");
     await Hive.box<CategoryEntity>(kCategoryBox).clear();
     await Hive.box<ProductEntity>(kProductBox).clear();
-    print("✅ Hive storage cleared");
+    //print("✅ Hive storage cleared");
   }
 }

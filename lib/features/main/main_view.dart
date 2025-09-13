@@ -35,7 +35,7 @@ class _MainViewState extends State<MainView> {
               cubit.getAllCategories();
               return cubit;
             } catch (e) {
-              print("❌ Error creating CategoryCubit: $e");
+              // print("❌ Error creating CategoryCubit: $e");
               return CategoryCubit(getIt.get<CategoriesUsecase>());
             }
           },
@@ -47,7 +47,7 @@ class _MainViewState extends State<MainView> {
               cubit.getAllProducts();
               return cubit;
             } catch (e) {
-              print("❌ Error creating AllProductCubit: $e");
+              // print("❌ Error creating AllProductCubit: $e");
               return AllProductCubit(getIt.get<AllproductsUsecase>());
             }
           },
@@ -64,7 +64,30 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _views[_currentIndex],
+      body: Stack(
+        children: [
+          _views[_currentIndex],
+          // Temporary refresh button
+          // Positioned(
+          //   top: 50,
+          //   right: 20,
+          //   child: FloatingActionButton(
+          //     mini: true,
+          //     onPressed: () async {
+          //       //  print("🔄 Manual refresh triggered");
+          //       // Clear local storage and refresh data
+          //       final homeRepo = getIt.get<AllproductsUsecase>().homeRepo;
+          //       await homeRepo.clearLocalStorage();
+
+          //       // Refresh both cubits
+          //       context.read<CategoryCubit>().getAllCategories();
+          //       context.read<AllProductCubit>().getAllProducts();
+          //     },
+          //     child: const Icon(Icons.refresh),
+          //   ),
+          // ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: ColorManager.primaryColor,

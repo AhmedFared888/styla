@@ -18,7 +18,7 @@ class CategoryListViewItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppSize.s4),
       child: InkWell(
         onTap: () {
-          print("🖱️ Category tapped: ${category.categoryName}");
+          // print("🖱️ Category tapped: ${category.categoryName}");
           // change current category to selected category && filter the products
           context.read<CategoryCubit>().changeCategory(
             category.categoryName,
@@ -30,9 +30,9 @@ class CategoryListViewItem extends StatelessWidget {
             if (state is CategorySuccesse) {
               final isSelected =
                   state.selectedCategory == category.categoryName;
-              print(
-                "🔍 Category '${category.categoryName}' isSelected: $isSelected (selectedCategory: '${state.selectedCategory}')",
-              );
+              // print(
+              //   "🔍 Category '${category.categoryName}' isSelected: $isSelected (selectedCategory: '${state.selectedCategory}')",
+              // );
 
               return Container(
                 decoration: BoxDecoration(
@@ -46,7 +46,7 @@ class CategoryListViewItem extends StatelessWidget {
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: ColorManager.black.withOpacity(0.2),
+                            color: ColorManager.black.withValues(alpha: 0.2),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),

@@ -12,11 +12,22 @@ class SearchSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
-          child: CustomTextFormField(hintText: StringsManager.searchForClothes),
+        Expanded(
+          child: CustomTextFormField(
+            hintText: StringsManager.searchForClothes,
+            prefixIcon: SvgPicture.asset(
+              AssetsManager.search,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
         ),
         const SizedBox(width: AppSize.s8),
-        SvgPicture.asset(AssetsManager.filterButton),
+        SvgPicture.asset(
+          AssetsManager.filterButton,
+          width: AppSize.s45,
+          height: AppSize.s45,
+          fit: BoxFit.contain,
+        ),
       ],
     );
   }

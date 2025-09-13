@@ -21,12 +21,12 @@ import 'package:styla/features/search/presentation/views/search_view.dart';
 import 'package:styla/features/splash/presentation/views/splash_view.dart';
 
 class RoutesManager {
-  static const String splashRoute = '/splash';
+  static const String splashRoute = '/';
   static const String onBoardingRoute = '/onBoarding';
   static const String registerRoute = '/register';
   static const String loginRoute = '/login';
   static const String forgetPasswordRoute = '/forgetPassword';
-  static const String mainRoute = '/';
+  static const String mainRoute = '/main';
   static const String homeRoute = '/home';
   static const String savedRoute = '/saved';
   static const String cartRoute = '/cart';

@@ -20,17 +20,17 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<CategoryEntity>>> getAllCategory() async {
     try {
       var categoryLocal = homeLocalDataSource.getAllCategory();
-      print("🔍 Categories from local storage: ${categoryLocal.length}");
+      // print("🔍 Categories from local storage: ${categoryLocal.length}");
       if (categoryLocal.isNotEmpty) {
-        print("✅ Using categories from local storage");
+        // print("✅ Using categories from local storage");
         return right(categoryLocal);
       }
-      print("🔄 Fetching categories from remote API");
+      //  print("🔄 Fetching categories from remote API");
       var categories = await homeRemoteDataSource.getAllCategory();
       return right(categories);
     } catch (e, s) {
-      print(e);
-      print(s);
+      // print(e);
+      // print(s);
       if (e is DioException) {
         return left(ServerFailre.fromDioException(e));
       } else {
@@ -43,20 +43,20 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
     try {
       var productLocal = homeLocalDataSource.getAllProducts();
-      print("🔍 Products from local storage: ${productLocal.length}");
+      //print("🔍 Products from local storage: ${productLocal.length}");
       if (productLocal.isNotEmpty) {
-        print("✅ Using products from local storage");
-        print(
-          "🔍 Sample local product categories: ${productLocal.take(3).map((p) => p.category).toList()}",
-        );
+        // print("✅ Using products from local storage");
+        // print(
+        //   "🔍 Sample local product categories: ${productLocal.take(3).map((p) => p.category).toList()}",
+        // );
         return right(productLocal);
       }
-      print("🔄 Fetching products from remote API");
+      // print("🔄 Fetching products from remote API");
       var products = await homeRemoteDataSource.getAllProducts();
       return right(products);
     } catch (e, s) {
-      print(e);
-      print(s);
+      // print(e);
+      // print(s);
       if (e is DioException) {
         return left(ServerFailre.fromDioException(e));
       } else {
@@ -67,7 +67,7 @@ class HomeRepoImpl extends HomeRepo {
 
   // Method to clear local storage and force fresh API calls
   Future<void> clearLocalStorage() async {
-    print("🧹 Clearing local storage to force fresh API calls");
+    // print("🧹 Clearing local storage to force fresh API calls");
     await homeLocalDataSource.clearAllData();
   }
 }

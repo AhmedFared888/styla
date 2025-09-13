@@ -16,31 +16,31 @@ final getIt = GetIt.instance;
 
 void setupServiceLocator() {
   try {
-    print("🔧 Setting up service locator...");
+    //print("🔧 Setting up service locator...");
 
     // auth repo impl
     getIt.registerLazySingleton<AuthRepoImpl>(
       () => AuthRepoImpl(FirebaseAuth.instance),
     );
-    print("✅ AuthRepoImpl registered");
+    //print("✅ AuthRepoImpl registered");
 
     // register
     getIt.registerLazySingleton<RegisterUsecase>(
       () => RegisterUsecase(getIt.get<AuthRepoImpl>()),
     );
-    print("✅ RegisterUsecase registered");
+    //print("✅ RegisterUsecase registered");
 
     // login
     getIt.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(getIt.get<AuthRepoImpl>()),
     );
-    print("✅ LoginUsecase registered");
+    //print("✅ LoginUsecase registered");
 
     // forget password
     getIt.registerLazySingleton<ForgetPasswordUsecase>(
       () => ForgetPasswordUsecase(getIt.get<AuthRepoImpl>()),
     );
-    print("✅ ForgetPasswordUsecase registered");
+    //print("✅ ForgetPasswordUsecase registered");
 
     // home
     getIt.registerLazySingleton<CategoriesUsecase>(
@@ -51,7 +51,7 @@ void setupServiceLocator() {
         ),
       ),
     );
-    print("✅ CategoriesUsecase registered");
+    //print("✅ CategoriesUsecase registered");
 
     getIt.registerLazySingleton<AllproductsUsecase>(
       () => AllproductsUsecase(
@@ -61,12 +61,12 @@ void setupServiceLocator() {
         ),
       ),
     );
-    print("✅ AllproductsUsecase registered");
+    // print("✅ AllproductsUsecase registered");
 
-    print("✅ Service locator setup completed successfully");
+    //print("✅ Service locator setup completed successfully");
   } catch (e, stackTrace) {
-    print("❌ Error setting up service locator: $e");
-    print("Stack trace: $stackTrace");
+    // print("❌ Error setting up service locator: $e");
+    // print("Stack trace: $stackTrace");
     rethrow;
   }
 }

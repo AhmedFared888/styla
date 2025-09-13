@@ -13,15 +13,15 @@ class HomeGridView extends StatelessWidget {
     return Expanded(
       child: BlocBuilder<AllProductCubit, AllProductState>(
         builder: (context, state) {
-          print("🔄 HomeGridView rebuilding with state: ${state.runtimeType}");
+          // print("🔄 HomeGridView rebuilding with state: ${state.runtimeType}");
 
           if (state is AllProductSuccess) {
-            print(
-              "✅ HomeGridView: Success state with ${state.products.length} products",
-            );
-            print(
-              "🔍 Products in grid: ${state.products.take(3).map((p) => '${p.productName} (${p.category})').toList()}",
-            );
+            // print(
+            //   "✅ HomeGridView: Success state with ${state.products.length} products",
+            // );
+            // print(
+            //   "🔍 Products in grid: ${state.products.take(3).map((p) => '${p.productName} (${p.category})').toList()}",
+            // );
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -38,14 +38,14 @@ class HomeGridView extends StatelessWidget {
               itemCount: state.products.length,
             );
           } else if (state is AllProductFailure) {
-            print(
-              "❌ HomeGridView: Failure state with error: ${state.errorMessage}",
-            );
+            // print(
+            //   "❌ HomeGridView: Failure state with error: ${state.errorMessage}",
+            // );
             return Center(
               child: Text(state.errorMessage),
             );
           } else {
-            print("⏳ HomeGridView: Loading/Initial state");
+            //print("⏳ HomeGridView: Loading/Initial state");
             return const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

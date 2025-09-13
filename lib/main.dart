@@ -11,30 +11,30 @@ import 'package:styla/features/home/domain/entities/product_entity/product_entit
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
-    print("🚀 Initializing Flutter app...");
+    //  print("🚀 Initializing Flutter app...");
 
     await Firebase.initializeApp();
-    print("✅ Firebase initialized");
+    // print("✅ Firebase initialized");
 
     await Hive.initFlutter();
-    print("✅ Hive initialized");
+    //  print("✅ Hive initialized");
 
     Hive.registerAdapter(CategoryEntityAdapter());
     Hive.registerAdapter(ProductEntityAdapter());
-    print("✅ Hive adapters registered");
+    //  print("✅ Hive adapters registered");
 
     await Hive.openBox<CategoryEntity>(kCategoryBox);
     await Hive.openBox<ProductEntity>(kProductBox);
-    print("✅ Hive boxes opened");
+    //    print("✅ Hive boxes opened");
 
     setupServiceLocator();
-    print("✅ Service locator setup complete");
+    //  print("✅ Service locator setup complete");
 
     runApp(const Styla());
-    print("✅ App started successfully");
+    // print("✅ App started successfully");
   } catch (e, stackTrace) {
-    print("❌ Fatal error during app initialization: $e");
-    print("Stack trace: $stackTrace");
+    // print("❌ Fatal error during app initialization: $e");
+    // print("Stack trace: $stackTrace");
     // Re-throw to show Flutter's error screen
     rethrow;
   }

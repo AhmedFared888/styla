@@ -29,9 +29,9 @@ class ProductModel extends ProductEntity {
        );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
-    print('🔍 Parsing product JSON: $json');
-    print('🔍 Category field value: ${json['category']}');
-    print('🔍 Category field type: ${json['category']?.runtimeType}');
+    // print('🔍 Parsing product JSON: $json');
+    // print('🔍 Category field value: ${json['category']}');
+    // print('🔍 Category field type: ${json['category']?.runtimeType}');
 
     final product = ProductModel(
       id: json['id'] as int?,
@@ -45,7 +45,7 @@ class ProductModel extends ProductEntity {
           : Rating.fromJson(json['rating'] as Map<String, dynamic>),
     );
 
-    print('🔍 Parsed product category: ${product.category}');
+    // print('🔍 Parsed product category: ${product.category}');
     return product;
   }
 
