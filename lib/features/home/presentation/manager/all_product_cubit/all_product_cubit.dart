@@ -9,6 +9,7 @@ class AllProductCubit extends Cubit<AllProductState> {
   AllProductCubit(this.allproductsUsecase) : super(AllProductInitial());
   final AllproductsUsecase allproductsUsecase;
   List<ProductEntity> allProducts = [];
+  List<ProductEntity> searchedProducts = [];
 
   Future<void> getAllProducts() async {
     try {
@@ -67,5 +68,14 @@ class AllProductCubit extends Cubit<AllProductState> {
       // );
       emit(AllProductSuccess(products: filtered));
     }
+  }
+
+  void searchFunction(String keyword) {
+    searchedProducts = allProducts.where((product) {
+      final title = product.productName.toString().toLowerCase();
+      final input = keyword.toLowerCase();
+      return title.startsWith(input);
+    }).toList();
+    emit(AllProductSuccess(products: searchedProducts));
   }
 }

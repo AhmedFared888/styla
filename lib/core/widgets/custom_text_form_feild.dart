@@ -10,6 +10,7 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.prefixIcon,
+    this.onChanged,
   });
 
   final TextEditingController? textEditingController;
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final Widget? prefixIcon;
+  final void Function(String)? onChanged;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -33,6 +35,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       controller: widget.textEditingController,
       obscureText: widget.isPassword ? _obscureText : false,
       validator: widget.validator,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         hintText: widget.hintText,
         labelText: widget.labelText,
