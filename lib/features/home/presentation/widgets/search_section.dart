@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,6 +7,7 @@ import 'package:styla/core/resources/strings_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
 import 'package:styla/core/widgets/custom_text_form_feild.dart';
 import 'package:styla/features/home/presentation/manager/all_product_cubit/all_product_cubit.dart';
+import 'package:styla/features/home/presentation/widgets/methods/filter/filter_modal_bottom_sheet.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({super.key});
@@ -25,11 +27,14 @@ class SearchSection extends StatelessWidget {
           ),
         ),
         const SizedBox(width: AppSize.s8),
-        SvgPicture.asset(
-          AssetsManager.filterButton,
-          width: AppSize.s45,
-          height: AppSize.s45,
-          fit: BoxFit.contain,
+        GestureDetector(
+          onTap: () => filterModalBottomSheet(context),
+          child: SvgPicture.asset(
+            AssetsManager.filterButton,
+            width: AppSize.s45,
+            height: AppSize.s45,
+            fit: BoxFit.contain,
+          ),
         ),
       ],
     );

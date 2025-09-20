@@ -56,6 +56,12 @@ abstract class StringsManager {
   static const String discover = 'Discover';
   static const String searchForClothes = 'Search for clothes...';
 
+  // filter strings
+  static const String filter = 'Filters';
+  static const String sortBy = 'Sort By';
+  static const String applyFilter = 'Apply Filter';
+  static const String plsSelectOneFilter = 'Please select at lest one filter';
+
   // saved view strings
   static const String savedItems = 'Saved Items';
 }

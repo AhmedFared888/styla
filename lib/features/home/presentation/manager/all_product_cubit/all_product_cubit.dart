@@ -5,6 +5,8 @@ import 'package:styla/features/home/domain/usecases/allproducts_usecase.dart';
 
 part 'all_product_state.dart';
 
+enum FilterOption { none, lowToHigh, highToLow }
+
 class AllProductCubit extends Cubit<AllProductState> {
   AllProductCubit(this.allproductsUsecase) : super(AllProductInitial());
   final AllproductsUsecase allproductsUsecase;
@@ -76,6 +78,18 @@ class AllProductCubit extends Cubit<AllProductState> {
       final input = keyword.toLowerCase();
       return title.startsWith(input);
     }).toList();
+    emit(AllProductSuccess(products: searchedProducts));
+  }
+
+  void sortByHighToLowPrice() {
+    searchedProducts = List<ProductEntity>.from(allProducts);
+    searchedProducts.sort((a, b) => b.productPrice.compareTo(a.productPrice));
+    emit(AllProductSuccess(products: searchedProducts));
+  }
+
+  void sortByLowToHightPrice() {
+    searchedProducts = List<ProductEntity>.from(allProducts);
+    searchedProducts.sort((a, b) => a.productPrice.compareTo(b.productPrice));
     emit(AllProductSuccess(products: searchedProducts));
   }
 }
