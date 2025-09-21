@@ -9,5 +9,6 @@ class ColorManager {
   static const Color grey = Color(0xff808080);
   static const Color blue = Color(0xff1877F2);
   static const Color green = Color(0xff0C9409);
-  static const Color lightGrey2 = Color(0xffD3D3D3);
+  static const Color lightGrey2 = Color(0xfff5f4f7);
+  static const Color elevationColor = Color(0xff525252);
 }

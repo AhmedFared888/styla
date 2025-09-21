@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:styla/core/resources/assets_manager.dart';
 import 'package:styla/core/resources/color_manager.dart';
-import 'package:styla/core/resources/strings_manager.dart';
 import 'package:styla/core/resources/styles_manager.dart';
 import 'package:styla/core/resources/values_manager.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({super.key});
+  final String title;
+  const CustomAppbar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsetsGeometry.only(right: AppPadding.p24),
       child: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).pop();
+          },
           icon: const Icon(Icons.arrow_back),
         ),
         centerTitle: true,
         title: Text(
-          StringsManager.savedItems,
+          title,
           style: StylesManager.textStyle24Sem(ColorManager.primaryColor),
         ),
         actions: [

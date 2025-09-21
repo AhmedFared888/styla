@@ -24,4 +24,7 @@ abstract class AssetsManager {
   static const String notificationIcon = '$imagePath/Bell.svg';
   static const String filterButton = '$imagePath/filter_button.svg';
   static const String micIcon = "$imagePath/mic_icon.svg";
+
+  // notification view assets
+  static const String discountIcon = "$imagePath/discount_icon.svg";
 }

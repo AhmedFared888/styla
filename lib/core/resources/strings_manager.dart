@@ -64,4 +64,8 @@ abstract class StringsManager {
 
   // saved view strings
   static const String savedItems = 'Saved Items';
+
+  // notification view
+  static const String notification = 'Notification';
+  static const String today = 'Today';
 }

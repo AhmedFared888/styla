@@ -59,6 +59,16 @@ class HomeGridViewItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: ColorManager.white,
                     borderRadius: BorderRadius.circular(AppSize.s8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorManager.elevationColor.withValues(
+                          alpha: 0.25,
+                        ),
+                        offset: const Offset(0, AppSize.s8),
+                        blurRadius: AppSize.s10,
+                        spreadRadius: 0,
+                      ),
+                    ],
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(AppPadding.p4),
