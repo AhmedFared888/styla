@@ -27,4 +27,5 @@ abstract class AssetsManager {
 
   // notification view assets
   static const String discountIcon = "$imagePath/discount_icon.svg";
+  static const String walletIcon = "$imagePath/wallet_icon.svg";
 }

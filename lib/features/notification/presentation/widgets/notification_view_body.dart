@@ -21,12 +21,15 @@ class NotificationViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Divider(thickness: .7),
-            SizedBox(height: AppSize.s20),
+            SizedBox(height: AppSize.s10),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     TodaySection(),
+                    Divider(thickness: .7),
+                    SizedBox(height: AppSize.s10),
+                    YesterdaySection(),
                   ],
                 ),
               ),
@@ -53,7 +56,7 @@ class TodaySection extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: 2,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return ListTile(
               leading: SvgPicture.asset(AssetsManager.discountIcon),
@@ -65,6 +68,45 @@ class TodaySection extends StatelessWidget {
               ),
               subtitle: Text(
                 'Special promotion only valid today.',
+                style: StylesManager.textStyle12Reg(
+                  ColorManager.grey,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class YesterdaySection extends StatelessWidget {
+  const YesterdaySection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          StringsManager.yesterday,
+          style: StylesManager.textStyle16Sem(ColorManager.primaryColor),
+        ),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: SvgPicture.asset(AssetsManager.walletIcon),
+              title: Text(
+                'Top Up E-wallet Successfully!',
+                style: StylesManager.textStyle14Sem(
+                  ColorManager.primaryColor,
+                ),
+              ),
+              subtitle: Text(
+                'You have top up your e-wallet.',
                 style: StylesManager.textStyle12Reg(
                   ColorManager.grey,
                 ),

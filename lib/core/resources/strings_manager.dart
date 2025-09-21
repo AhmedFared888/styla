@@ -68,4 +68,5 @@ abstract class StringsManager {
   // notification view
   static const String notification = 'Notification';
   static const String today = 'Today';
+  static const String yesterday = 'Yesterday';
 }
